@@ -1,7 +1,7 @@
 Heroku buildpack: Python
 ========================
 
-This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Python apps, powered by [pip](http://www.pip-installer.org/).
+This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Python apps with support for [NumPy](http://www.numpy.org).
 
 [![Build Status](https://secure.travis-ci.org/norbert/heroku-buildpack-python.png?branch=numpy)](http://travis-ci.org/norbert/heroku-buildpack-python)
 
