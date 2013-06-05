@@ -1,7 +1,7 @@
 Heroku buildpack: Python
 ========================
 
-This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Python apps with support for [NumPy](http://www.numpy.org).
+This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Python apps with support for [NumPy](http://www.numpy.org), [SciPy](http://www.scipy.org) and [scikit-learn](http://scikit-learn.org).
 
 [![Build Status](https://secure.travis-ci.org/norbert/heroku-buildpack-python.png?branch=numpy)](http://travis-ci.org/norbert/heroku-buildpack-python)
 
@@ -22,8 +22,6 @@ Example usage:
 You can also add it to upcoming builds of an existing application:
 
     $ heroku config:add BUILDPACK_URL=git://github.com/norbert/heroku-buildpack-python.git#numpy
-
-The buildpack will detect your app as Python if it has the file `requirements.txt` in the root.
 
 The NumPy step is triggered if your `requirements.txt` file contains `numpy`, which installs a built distribution of `numpy==1.7.1` and `scipy==0.12.0`.
 
