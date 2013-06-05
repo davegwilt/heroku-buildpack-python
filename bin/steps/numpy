@@ -12,6 +12,7 @@
 # The location of the pre-compiled binaries.
 VENDORED_GIT_NAME=heroku-buildpack-python-libraries
 VENDORED_GIT_REPO="git://github.com/norbert/${VENDORED_GIT_NAME}.git"
+VENDORED_GIT_BRANCH="numpy"
 VENDORED_GIT_CACHE="${CACHE_DIR}/${VENDORED_GIT_NAME}"
 
 ATLAS_TAR=atlas-3.6.0.tar.bz2
@@ -26,7 +27,7 @@ if (grep -Eiq "^\s*numpy" requirements.txt) then
 
   if [ ! -d "${VENDORED_GIT_CACHE}" ]; then
     echo -n "       Cloning libraries..."
-    git clone --depth 1 "${VENDORED_GIT_REPO}" "${VENDORED_GIT_CACHE}" > /dev/null
+    git clone --depth 1 --branch ${VENDORED_GIT_BRANCH} "${VENDORED_GIT_REPO}" "${VENDORED_GIT_CACHE}" > /dev/null
     echo " done"
   fi
 
