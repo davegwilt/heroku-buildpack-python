@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script serves as the NumPy build step of the
+# This script serves as the NumPy build step of the original
 # [**Python Buildpack**](https://github.com/heroku/heroku-buildpack-python)
 # compiler.
 #
@@ -11,7 +11,7 @@
 
 # The location of the pre-compiled binaries.
 VENDORED_GIT_NAME=heroku-buildpack-python-libraries
-VENDORED_GIT_REPO="git://github.com/norbert/${VENDORED_GIT_NAME}.git"
+VENDORED_GIT_REPO="git://github.com/essentia-analytics/${VENDORED_GIT_NAME}.git"
 VENDORED_GIT_BRANCH="numpy"
 VENDORED_GIT_CACHE="${CACHE_DIR}/${VENDORED_GIT_NAME}"
 
@@ -20,7 +20,7 @@ NUMPY_EGG=numpy-1.7.1-py2.7-linux-x86_64.egg
 SCIPY_EGG=scipy-0.12.0-py2.7-linux-x86_64.egg
 
 if (grep -Eiq "^\s*numpy" requirements.txt) then
-  puts-step "Preparing NumPy"
+  puts-step "Preparing numpy"
   cd .heroku
 
   EASY_INSTALL=$(pwd)/python/bin/easy_install
@@ -37,10 +37,10 @@ if (grep -Eiq "^\s*numpy" requirements.txt) then
     tar xjf "${VENDORED_GIT_CACHE}/${ATLAS_TAR}" -C vendor
   fi
 
-  echo "Installing NumPy egg" | indent
+  echo "Installing numpy egg" | indent
   $EASY_INSTALL -q "${VENDORED_GIT_CACHE}/${NUMPY_EGG}"
 
-  echo "Installing SciPy egg" | indent
+  echo "Installing scipy egg" | indent
   $EASY_INSTALL -q "${VENDORED_GIT_CACHE}/${SCIPY_EGG}"
 
   echo "Setting library paths to include ATLAS" | indent
