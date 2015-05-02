@@ -13,13 +13,13 @@ echo ">>>ENV:"
 env
 echo ">>>PWD: $(pwd)"
 echo ">>>LS PWD:"
-ls -alR "$(pwd)"
+ls -al "$(pwd)"
 echo ">>>LS BUILD_DIR - $1:"
-ls -alR "$1"
+ls -al "$1"
 echo ">>>LS CACHE_DIR - $2:"
-ls -alR -I python "$2"
+ls -al "$2"
 echo ">>>LS ENV_DIR - $3:"
-ls -alR "$3"
+ls -al "$3"
 echo ">>>ENV_DIR CONTENTS:"
 if [ -d "$3" ]
 then
