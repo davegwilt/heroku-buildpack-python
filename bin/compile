@@ -7,6 +7,23 @@
 # Fail fast and fail hard.
 set -eo pipefail
 
+echo "----- for debugging -----"
+echo ">>>ARGS: $@"
+echo ">>>PWD: $(pwd)"
+echo ">>>ENV:"
+env
+echo ">>>LS ENV_DIR:"
+ls -al "$3"
+echo ">>>ENV_DIR CONTENTS:"
+if [ -d "$3" ]
+then
+    for e in $(ls "$3")
+    do
+       echo "    >>> $e=$(cat $3/$e)"
+    done
+fi
+echo "-------------------------"
+
 # Prepend proper path for virtualenv hackery. This will be deprecated soon.
 export PATH=:/usr/local/bin:$PATH
 
