@@ -79,6 +79,10 @@ export BUILD_DIR CACHE_DIR BIN_DIR PROFILE_PATH
 # Syntax sugar.
 source $BIN_DIR/utils
 
+puts-step "TEST OUTPUT: puts-step"
+echo "TEST OUTPUT: echo"
+echo "TEST OUTPUT: echo >&2" >&2
+
 # Directory Hacks for path consistiency.
 APP_DIR='/app'
 TMP_APP_DIR=$CACHE_DIR/tmp_app_dir
