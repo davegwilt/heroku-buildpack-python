@@ -9,11 +9,17 @@ set -eo pipefail
 
 echo "----- for debugging -----"
 echo ">>>ARGS: $@"
-echo ">>>PWD: $(pwd)"
 echo ">>>ENV:"
 env
-echo ">>>LS ENV_DIR:"
-ls -al "$3"
+echo ">>>PWD: $(pwd)"
+echo ">>>LS PWD:"
+ls -alR "$(pwd)"
+echo ">>>LS BUILD_DIR - $1:"
+ls -alR "$1"
+echo ">>>LS CACHE_DIR - $2:"
+ls -alR "$2"
+echo ">>>LS ENV_DIR - $3:"
+ls -alR "$3"
 echo ">>>ENV_DIR CONTENTS:"
 if [ -d "$3" ]
 then
@@ -78,10 +84,6 @@ export BUILD_DIR CACHE_DIR BIN_DIR PROFILE_PATH
 
 # Syntax sugar.
 source $BIN_DIR/utils
-
-puts-step "TEST OUTPUT: puts-step"
-echo "TEST OUTPUT: echo"
-echo "TEST OUTPUT: echo >&2" >&2
 
 # Directory Hacks for path consistiency.
 APP_DIR='/app'
