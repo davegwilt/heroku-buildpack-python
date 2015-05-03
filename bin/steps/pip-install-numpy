@@ -5,6 +5,7 @@ puts-step "Installing numpy and scipy (and required libs) from pre-built wheels 
 [ "$FRESH_PYTHON" ] && bpwatch start pip_install_numpy_first
 
 echo "Installing libs..." | indent
+mkdir -p /app/.heroku/vendor
 tar -C /app/.heroku/vendor -xzf $ROOT_DIR/vendor/lib_files/libs.tar.gz
 
 echo "Installing numpy..." | indent
