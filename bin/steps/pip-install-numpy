@@ -1,0 +1,19 @@
+# Install dependencies with Pip.
+puts-step "Installing numpy and scipy (and required libs) from pre-built wheels with pip"
+
+[ ! "$FRESH_PYTHON" ] && bpwatch start pip_install_numpy
+[ "$FRESH_PYTHON" ] && bpwatch start pip_install_numpy_first
+
+echo "Installing libs..." | indent
+tar -C /app/.heroku/vendor -xzf $ROOT_DIR/vendor/lib_files/libs.tar.gz
+
+echo "Installing numpy..." | indent
+/app/.heroku/python/bin/pip install $ROOT_DIR/vendor/wheel_files/numpy-1.9.2-cp27-none-linux_x86_64.whl | indent
+
+echo "Installing scipy..." | indent
+/app/.heroku/python/bin/pip install $ROOT_DIR/vendor/wheel_files/scipy-0.12.0-cp27-none-linux_x86_64.whl | indent
+
+[ ! "$FRESH_PYTHON" ] && bpwatch stop pip_install_numpy
+[ "$FRESH_PYTHON" ] && bpwatch stop pip_install_numpy_first
+
+echo

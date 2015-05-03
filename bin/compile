@@ -80,7 +80,7 @@ bpwatch start compile
 
 
 # We'll need to send these statics to other scripts we `source`.
-export BUILD_DIR CACHE_DIR BIN_DIR PROFILE_PATH
+export BUILD_DIR CACHE_DIR BIN_DIR PROFILE_PATH ROOT_DIR
 
 # Syntax sugar.
 source $BIN_DIR/utils
@@ -188,6 +188,9 @@ source $BIN_DIR/steps/pylibmc
 
 # Libffi support.
 source $BIN_DIR/steps/cryptography
+
+# Install numpy and scipy (and required libs) from pre-built wheels
+source $BIN_DIR/steps/pip-install-numpy
 
 # Install dependencies with Pip.
 source $BIN_DIR/steps/pip-install
