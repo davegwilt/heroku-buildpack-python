@@ -30,8 +30,6 @@ then
 fi
 echo "-------------------------"
 
-alias ll='ls -al'
-
 # Prepend proper path for virtualenv hackery. This will be deprecated soon.
 export PATH=:/usr/local/bin:$PATH
 
@@ -172,6 +170,12 @@ mkdir .heroku &> /dev/null
 set -e
 
 mkdir -p $(dirname $PROFILE_PATH)
+
+# ====================================
+mkdir -p $BUILD_DIR/.build_tmp
+cp -R $ROOT_DIR/vendor/deb_files $BUILD_DIR/.build_tmp
+cp -R $ROOT_DIR/vendor/python_source $BUILD_DIR/.build_tmp
+# ====================================
 
 # Install Python.
 source $BIN_DIR/steps/python
